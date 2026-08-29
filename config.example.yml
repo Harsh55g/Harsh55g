@@ -1,0 +1,38 @@
+# Copy this file to config.yml and fill in your own details.
+# Only the "static" fields below need manual editing — repos, stars,
+# followers, commits and top languages are pulled live from the GitHub API
+# every time the workflow runs.
+
+github_handle: Harsh55g
+
+# Shown as "<handle>@github" in the card header.
+header_suffix: github
+
+system:
+  os: "Ubuntu / Arch (dual boot)"       # <-- edit
+  host: "IISER Thiruvananthapuram"      # <-- edit (or your laptop model, employer, etc.)
+  kernel: "Student"                     # <-- edit (Andrew uses his job title here — reuse creatively)
+  ide: "VS Code, Jupyter"               # <-- edit
+
+hobbies:
+  - label: "Reading"
+    value: "Math, ML papers"            # <-- edit
+  - label: "Sports"
+    value: "Cricket"                    # <-- edit
+
+contact:
+  email: "your.email@example.com"       # <-- edit, or delete this line to hide it
+  linkedin: "your-linkedin-handle"      # <-- edit, or delete
+  discord: "yourname"                   # <-- edit, or delete
+  website: ""                           # optional, blog/portfolio URL
+
+about:
+  name: "Harsh Suthar"
+  line1: "Student at IISER Thiruvananthapuram"
+  line2: "Mathematics major, Data Science minor"
+
+# ASCII portrait source. Point this at your avatar (downloaded once) or any
+# square-ish image. The workflow re-downloads your live GitHub avatar each
+# run unless you set a fixed local file here.
+avatar_path: "avatar.png"
+ascii_cols: 60

@@ -1,0 +1,46 @@
+# Save this file to: .github/workflows/refresh-card.yml
+#
+# Heads-up: GitHub disables scheduled workflows after 60 days of repository
+# inactivity and emails the owner. Profile repos are quiet by design, so this
+# can bite - if the card stops updating, re-enable the workflow from the
+# Actions tab (the "Run workflow" button is also a quick way to check it).
+name: Refresh profile card
+
+on:
+  schedule:
+    # Daily at 06:17 UTC. Off-the-hour times get scheduled more reliably.
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-profile-card
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate card
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 generate_card.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dark_mode.svg light_mode.svg
+          git diff --cached --quiet || git commit -m "chore: refresh profile card"
+          git push
