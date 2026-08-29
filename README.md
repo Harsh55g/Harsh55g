@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="light_mode.svg" />
+  <img alt="Harsh55g's GitHub profile" src="dark_mode.svg" />
+</picture>
 # 💫 About Me:
 I am currently student at IISER tvm<br>My name is Harsh Suthar <br>mathematics major with data science minor <br>
 
